@@ -1,56 +1,89 @@
-🎥 Criando o GIF de Demonstração
-1️⃣ Instale o gravador de tela
+Script para Adicionar Múltiplos CNAEs Automaticamente
 
-Sugiro o ScreenToGif (Windows) porque ele já grava, edita e exporta o GIF no mesmo programa.
-Alternativas:
+Este script em Python automatiza o processo de adicionar vários códigos CNAE (Classificação Nacional de Atividades Econômicas) em um sistema web, utilizando PyAutoGUI para interação com a interface gráfica.
 
-OBS Studio (Windows, Linux, Mac) — mais profissional.
+Ele é ideal para casos em que há a necessidade de inserir um grande volume de CNAEs repetidamente, reduzindo o tempo gasto e evitando trabalho manual repetitivo.
 
-LICEcap — simples e direto.
+📋 Funcionalidades
 
-2️⃣ Prepare o ambiente de gravação
+Leitura automática de lista de CNAEs pré-definidos.
 
-Deixe o script pronto para rodar.
+Localização e clique em elementos da tela com base em imagens de referência.
 
-Abra o sistema onde os CNAEs serão inseridos.
+Preenchimento automático do campo de pesquisa com o CNAE.
 
-Certifique-se de que todos os botões e campos usados estão visíveis na tela.
+Clique no botão de pesquisa e, em seguida, no botão de adicionar.
 
-Feche qualquer janela desnecessária para focar no processo.
+Limpeza automática do campo após cada inserção.
 
-3️⃣ Grave o vídeo
+Controle de tempo de espera entre etapas para garantir carregamento da página.
 
-Abra o ScreenToGif e selecione "Gravador".
+🚀 Tecnologias Utilizadas
 
-Ajuste a moldura de gravação para pegar só a área onde o script vai interagir (isso deixa o GIF mais leve).
+Python
 
-Clique Gravar, execute o script e não mexa no mouse/teclado.
+PyAutoGUI – Automação de mouse e teclado.
 
-Quando terminar, pare a gravação.
+time – Controle de tempo entre ações.
 
-4️⃣ Edite o GIF
+os – Manipulação de diretórios e arquivos.
 
-No ScreenToGif:
-
-Corte os frames iniciais/finais desnecessários.
-
-Reduza a taxa de frames para ~10 FPS (fica mais leve).
-
-Ajuste o tamanho para no máximo 800px de largura.
-
-Salve como GIF otimizado.
-
-5️⃣ Salve o arquivo no repositório
-
-Crie uma pasta docs/ no seu projeto e coloque o arquivo:
-
-docs/demo.gif
-
-6️⃣ Atualize o README
-
-No seu README.md, mantenha esta parte:
-
-![Demonstração do Script](docs/demo.gif)
+⚙️ Configuração
+1. Instalar dependências
+pip install pyautogui
 
 
-Quando você fizer o push, o GitHub exibirá o GIF automaticamente.
+Dica: Em alguns sistemas, pode ser necessário instalar também opencv-python para suporte ao parâmetro confidence:
+
+pip install opencv-python
+
+2. Estrutura de arquivos
+
+No mesmo diretório do script, adicione as imagens de referência:
+
+campo_pesquisa.png – Captura do campo onde será digitado o CNAE.
+
+botao_pesquisar.png – Captura do botão de pesquisa.
+
+botao_adicionar.png – Captura do botão de adicionar.
+
+3. Configurações no código
+
+No início do script, é possível ajustar:
+
+tempo_carregamento → tempo de espera após clicar em "Pesquisar".
+
+tempo_apos_adicionar → tempo de espera após adicionar o CNAE.
+
+confianca → nível de similaridade para localizar imagens (padrão: 0.8).
+
+▶️ Como Usar
+
+Abra o sistema web onde os CNAEs serão inseridos.
+
+Ajuste a tela de forma que todos os elementos estejam visíveis.
+
+Execute o script:
+
+python script.py
+
+
+Após a mensagem:
+
+Posicione a tela e aguarde 5 segundos...
+
+
+coloque o mouse na posição correta da tela do sistema.
+5. O script irá percorrer toda a lista de CNAEs automaticamente.
+
+🛡️ Avisos Importantes
+
+Este script simula ações humanas no computador; evite mexer no mouse/teclado durante a execução.
+
+Funciona melhor em resolução e escala de tela fixas (não altere o zoom do navegador).
+
+As imagens de referência devem ser capturadas exatamente como aparecem no seu sistema.
+
+📄 Licença
+
+Este projeto está sob a licença MIT.
